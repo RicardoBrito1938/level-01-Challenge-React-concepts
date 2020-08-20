@@ -21,9 +21,11 @@ function App() {
   async function handleRemoveRepository(id) {
     await api.delete(`repositories/${id}`);
 
-    setRepositories([
-      ...repositories.filter(repository => repository.id !== id)
-    ]);
+    const remainingRepos = repositories.filter(
+      repository => repository.id !== id
+    );
+
+    setRepositories(remainingRepos);
   }
 
   useEffect(() => {
